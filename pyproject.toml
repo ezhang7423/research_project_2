@@ -1,0 +1,20 @@
+[tool.poetry]
+authors = ["ezhang7423 <ezhang@g.harvard.edu>"]
+description = ""
+name = "research-project"
+readme = "README.md"
+version = "0.1.0"
+
+[tool.poetry.dependencies]
+eztils = "^0.4.80"
+python = "^3.10"
+python-dotenv = "^1.0.0"
+typer-config = "^1.4.0"
+
+[tool.poetry.scripts]
+# Entry points for the package https://python-poetry.org/docs/pyproject/#scripts
+"research_project" = "research_project.__main__:app"
+
+[build-system]
+build-backend = "poetry.core.masonry.api"
+requires = ["poetry-core"]
