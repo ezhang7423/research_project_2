@@ -1,15 +1,14 @@
-from typing import Optional
-
-from enum import Enum
-from random import choice
+from dataclasses import dataclass
 
 import typer
-from rich.console import Console
+from rich import print
 from typer_config.decorators import dump_json_config, use_json_config
 
 from research_project import setup_experiment
 
 setup_experiment()
+from eztils.typer import dataclass_option
+
 from research_project import LOG_DIR, version
 
 app = typer.Typer(
@@ -17,25 +16,30 @@ app = typer.Typer(
     help="project_tag",
     add_completion=False,
 )
-console = Console()
 
 
-def version_callback(print_version: bool) -> None:
-    """Print the version of the package."""
-    if print_version:
-        console.print(f"[yellow]research_project[/] version: [bold blue]{version}[/]")
-        raise typer.Exit()
+@dataclass
+class ExampleConfig:
+    block_size: int = 1024
+    recent_context: int = 20
+    add_prompt: int = True
+    n_layer: int = 3
+    n_head: int = 1
+    n_embd: int = 64
+    dropout: float = 0.0
+    bias: bool = True  # True: bias in Linears and LayerNorms, like GPT-2. False: a bit better and faster
 
 
 @app.command(name="")
 @use_json_config()
 @dump_json_config(str(LOG_DIR / "config.json"))
 def main(
-    # add my custom option
+    example_config: dataclass_option(ExampleConfig) = "{}",
 ) -> None:
     """Print a greeting with a giving name."""
 
-    console.print(f"[bold green]Welcome to your new project[/]")
+    print(f"[bold green]Welcome to research_project v{version}[/]")
+    print(f"example_config {type(example_config)}: {example_config}")
 
 
 app()
