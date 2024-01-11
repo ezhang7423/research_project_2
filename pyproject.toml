@@ -11,10 +11,98 @@ python = "^3.10"
 python-dotenv = "^1.0.0"
 typer-config = "^1.4.0"
 
+[build-system]
+build-backend = "poetry.core.masonry.api"
+requires = ["poetry-core"]
+
 [tool.poetry.scripts]
 # Entry points for the package https://python-poetry.org/docs/pyproject/#scripts
 "research_project" = "research_project.__main__:app"
 
-[build-system]
-build-backend = "poetry.core.masonry.api"
-requires = ["poetry-core"]
+[tool.poetry.group.dev.dependencies]
+black = "^23.12.1"
+ipython = "^8.20.0"
+isort = "^5.13.2"
+mypy = "^1.8.0"
+pre-commit = "^3.6.0"
+pytest = "^7.4.4"
+pyupgrade = "^3.15.0"
+
+####################################
+# Tools #
+####################################
+
+[tool.black]
+# https://github.com/psf/black
+color = true
+line-length = 88
+target-version = ["py38"]
+
+exclude = '''
+/(
+    \.git
+    | \.hg
+    | \.mypy_cache
+    | \.tox
+    | \.venv
+    | _build
+    | buck-out
+    | build
+    | dist
+    | env
+    | venv
+)/
+'''
+
+[tool.isort]
+# https://github.com/timothycrosley/isort/
+line_length = 88
+py_version = 38
+
+color_output = true
+include_trailing_comma = true
+indent = 4
+known_typing = ["typing", "types", "typing_extensions", "mypy", "mypy_extensions"]
+multi_line_output = 3
+profile = "black"
+sections = ["FUTURE", "TYPING", "STDLIB", "THIRDPARTY", "FIRSTPARTY", "LOCALFOLDER"]
+
+[tool.mypy]
+# https://mypy.readthedocs.io/en/latest/config_file.html#using-a-pyproject-toml-file
+color_output = true
+pretty = true
+python_version = "3.10"
+show_traceback = true
+
+allow_redefinition = false
+check_untyped_defs = true
+disallow_any_generics = true
+disallow_incomplete_defs = true
+ignore_missing_imports = true
+implicit_reexport = false
+no_implicit_optional = true
+show_column_numbers = true
+show_error_codes = true
+show_error_context = true
+strict_equality = true
+strict_optional = true
+warn_no_return = true
+warn_redundant_casts = true
+warn_return_any = true
+warn_unreachable = true
+warn_unused_configs = true
+warn_unused_ignores = true
+
+[tool.pytest.ini_options]
+# https://docs.pytest.org/en/6.2.x/customize.html#pyproject-toml
+# Directories that are not visited by pytest collector:
+doctest_optionflags = ["NUMBER", "NORMALIZE_WHITESPACE", "IGNORE_EXCEPTION_DETAIL"]
+norecursedirs = ["hooks", "*.egg", ".eggs", "dist", "build", "docs", ".tox", ".git", "__pycache__"]
+
+# Extra options:
+addopts = [
+  "--strict-markers",
+  "--tb=short",
+  "--doctest-modules",
+  "--doctest-continue-on-failure",
+]

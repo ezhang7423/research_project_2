@@ -1,4 +1,3 @@
-# type: ignore[attr-defined]
 from typing import Optional
 
 from enum import Enum
@@ -12,8 +11,6 @@ from research_project import setup_experiment
 
 setup_experiment()
 from research_project import LOG_DIR, version
-
-
 
 app = typer.Typer(
     name="research_project",
@@ -34,7 +31,7 @@ def version_callback(print_version: bool) -> None:
 @use_json_config()
 @dump_json_config(str(LOG_DIR / "config.json"))
 def main(
-    # add my custom option 
+    # add my custom option
 ) -> None:
     """Print a greeting with a giving name."""
 

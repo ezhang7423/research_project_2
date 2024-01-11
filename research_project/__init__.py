@@ -1,4 +1,3 @@
-# type: ignore[attr-defined]
 """project_tag"""
 
 """ 
@@ -28,7 +27,7 @@ __version__ = version
 
 REPO_DIR = setup_path(Path(abspath()) / "..")
 DATA_ROOT = setup_path(os.getenv("DATA_ROOT") or REPO_DIR)
-RUN_DIR = LOG_DIR = None
+RUN_DIR = LOG_DIR = Path()
 
 
 def setup_experiment():

@@ -26,11 +26,26 @@ install:
 	
 	poetry lock -n && poetry export --without-hashes > requirements.txt
 	poetry install -n
-	# -poetry run mypy --install-types --non-interactive ./
-
-.PHONY: pre-commit-install
-pre-commit-install:
+	poetry run mypy --install-types --non-interactive ./
 	poetry run pre-commit install
+
+#* Linting
+.PHONY: lint
+lint: test codestyle mypy
+
+
+.PHONY: test
+test:
+	PYTHONPATH=$(PYTHONPATH) poetry run pytest -c pyproject.toml tests/
+
+.PHONY: mypy
+mypy:
+	poetry run mypy --config-file pyproject.toml ./
+
+.PHONY: update-dev-deps
+update-dev-deps:
+	poetry add -D bandit@latest darglint@latest "isort[colors]@latest" mypy@latest pre-commit@latest pydocstyle@latest pylint@latest pytest@latest pyupgrade@latest safety@latest coverage@latest coverage-badge@latest pytest-html@latest pytest-cov@latest
+	poetry add -D --allow-prereleases black@latest
 
 #* Formatters
 .PHONY: codestyle
@@ -41,34 +56,3 @@ codestyle:
 
 .PHONY: formatting
 formatting: codestyle
-
-#* Linting
-.PHONY: test
-test:
-	PYTHONPATH=$(PYTHONPATH) poetry run pytest -c pyproject.toml --cov-report=html --cov=research_project tests/
-	mkdir -p assets/images
-	poetry run coverage-badge -o assets/images/coverage.svg -f
-
-.PHONY: check-codestyle
-check-codestyle:
-	poetry run isort --diff --check-only --settings-path pyproject.toml ./
-	poetry run black --diff --check --config pyproject.toml ./
-	poetry run darglint --verbosity 2 research_project tests
-
-.PHONY: mypy
-mypy:
-	poetry run mypy --config-file pyproject.toml ./
-
-.PHONY: check-safety
-check-safety:
-	poetry check
-	poetry run safety check --full-report
-	poetry run bandit -ll --recursive research_project tests
-
-.PHONY: lint
-lint: test check-codestyle mypy check-safety
-
-.PHONY: update-dev-deps
-update-dev-deps:
-	poetry add -D bandit@latest darglint@latest "isort[colors]@latest" mypy@latest pre-commit@latest pydocstyle@latest pylint@latest pytest@latest pyupgrade@latest safety@latest coverage@latest coverage-badge@latest pytest-html@latest pytest-cov@latest
-	poetry add -D --allow-prereleases black@latest
