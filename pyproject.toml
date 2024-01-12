@@ -1,7 +1,7 @@
 [tool.poetry]
 authors = ["ezhang7423 <ezhang@g.harvard.edu>"]
 description = ""
-name = "research-project"
+name = "research_project"
 readme = "README.md"
 version = "0.1.0"
 
