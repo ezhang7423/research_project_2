@@ -34,7 +34,7 @@ class ExampleConfig:
 @use_json_config()
 @dump_json_config(str(LOG_DIR / "config.json"))
 def main(
-    example_config: dataclass_option(ExampleConfig) = "{}",
+    example_config: dataclass_option(ExampleConfig) = "{}",  # type: ignore
 ) -> None:
     """Print a greeting with a giving name."""
 
