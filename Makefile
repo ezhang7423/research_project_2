@@ -12,6 +12,7 @@ install:
 	! type -P $(CONDA) &> /dev/null && { echo "Please install conda (https://docs.conda.io/en/latest/miniconda.html)"; exit 1; }
 	! type -P pipx &> /dev/null && { echo "Please install pipx (https://github.com/pypa/pipx)"; exit 1; }
 
+	# TODO ensure version of poetry is correct
 	! type -P poetry &> /dev/null && pipx install poetry==1.7.1
 
 	# install research_project conda environment
@@ -22,8 +23,8 @@ install:
 	
 	poetry lock -n && poetry export --without-hashes > requirements.txt
 	poetry install -n
-	poetry run mypy --install-types --non-interactive ./
 	poetry run pre-commit install
+	# poetry run mypy --install-types --non-interactive ./
 
 #* Linting
 .PHONY: lint

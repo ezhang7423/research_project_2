@@ -1,7 +1,8 @@
-# research_project_2
-
+# research_project
 
 ## Installation
+
+Find and replace `research_project` with the name of your module.
 
 ```
 make install
@@ -10,7 +11,7 @@ make install
 ## Usage
 
 ```
-research_project --example-config '{"block_size": 10}'  
+research_project --example-config '{"block_size": 10}'
 ```
 
 ```
