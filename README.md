@@ -2,7 +2,7 @@
 
 ## Installation
 
-Find and replace `research_project` with the name of your module.
+Find and replace `research_project` with the name of your module. Rename the folder `research_project` as well. Do not use any dashes. Then delete this line.
 
 ```
 make install

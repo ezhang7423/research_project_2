@@ -24,7 +24,7 @@ install:
 	poetry lock -n && poetry export --without-hashes > requirements.txt
 	poetry install -n
 	poetry run pre-commit install
-	# poetry run mypy --install-types --non-interactive ./
+	# poetry run mypy --install-types --non-interactive ./ 
 
 #* Linting
 .PHONY: lint
