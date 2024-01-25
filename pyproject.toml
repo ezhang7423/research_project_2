@@ -10,6 +10,7 @@ eztils = "^0.4.80"
 python = "^3.10"
 python-dotenv = "^1.0.0"
 typer-config = "^1.4.0"
+wandb = "^0.16.2"
 
 [build-system]
 build-backend = "poetry.core.masonry.api"
