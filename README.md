@@ -10,7 +10,7 @@ make install
 
 ## Usage
 
-Put a json config:
+Use json to modify the config:
 ```
 research_project --conf '{"block_size": 10}'
 ```
