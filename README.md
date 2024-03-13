@@ -10,10 +10,12 @@ make install
 
 ## Usage
 
+Put a json config:
 ```
-research_project --example-config '{"block_size": 10}'
+research_project --conf '{"block_size": 10}'
 ```
 
+Reuse an old config file by specifying the path:
 ```
 research_project --config $PWD/runs/<YYYY-MM-DD>---<HH-MM-SS>/config.json
 ```
