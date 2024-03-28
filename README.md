@@ -1,5 +1,10 @@
 # research_project
 
+
+## TODO
+
+1. update makefile to use venv instead of conda (use a single py311 condaenv or smth like that)
+
 ## Installation
 
 Find and replace `research_project` with the name of your module. Rename the folder `research_project` as well. Do not use any dashes. Then delete this line.
