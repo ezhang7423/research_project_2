@@ -6,11 +6,11 @@ readme = "README.md"
 version = "0.1.0"
 
 [tool.poetry.dependencies]
-eztils = "^0.4.80"
 python = "^3.11"
 python-dotenv = "^1.0.0"
 typer-config = "^1.4.0"
 wandb = "^0.16.2"
+eztils = "^0.4.93"
 
 [build-system]
 build-backend = "poetry.core.masonry.api"
@@ -22,7 +22,6 @@ requires = ["poetry-core"]
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.12.1"
-ipython = "^8.20.0"
 isort = "^5.13.2"
 mypy = "^1.8.0"
 pre-commit = "^3.6.0"
@@ -32,6 +31,8 @@ pyupgrade = "^3.15.0"
 ####################################
 # Tools #
 ####################################
+ipykernel = "^6.29.4"
+ipython = "^8.20.0"
 
 [tool.black]
 # https://github.com/psf/black
