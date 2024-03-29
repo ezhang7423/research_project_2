@@ -9,6 +9,7 @@ from research_project import setup_experiment
 
 setup_experiment()
 from eztils import datestr
+from eztils.torch import seed_everything
 from eztils.typer import dataclass_option
 
 from research_project import LOG_DIR, version
@@ -30,9 +31,7 @@ class Config:
     n_embd: int = 64
     dropout: float = 0.0
     bias: bool = True  # True: bias in Linears and LayerNorms, like GPT-2. False: a bit better and faster
-    wandb_project: str = "project"
-    wandb_profile_name: str = "ezipe"
-    name: str = f"experiment_{datestr()}"
+    seed: int = 42
 
 
 @app.command(name="")
@@ -44,6 +43,7 @@ def main(
 ) -> None:
     """Print a greeting with a giving name."""
     conf: Config = conf  # for type hinting
+    seed_everything(conf.seed)
 
     print(f"[bold green]Welcome to research_project v{version}[/]")
     print(f"config {type(conf)}: {conf}")
