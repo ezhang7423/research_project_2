@@ -437,13 +437,13 @@ tests = ["asttokens (>=2.1.0)", "coverage", "coverage-enable-subprocess", "ipyth
 
 [[package]]
 name = "eztils"
-version = "0.4.93"
+version = "0.4.94"
 description = "eds utilities"
 optional = false
 python-versions = "<4.0,>=3.8"
 files = [
-    {file = "eztils-0.4.93-py3-none-any.whl", hash = "sha256:8996707174c7268d5df9fd58c124e55e853eab2d8042ba2dee2bc370a1dc56ca"},
-    {file = "eztils-0.4.93.tar.gz", hash = "sha256:47895ac1a9a3e339bbb4b58f4af79b589cd7254c7017061083392f6b106e98b3"},
+    {file = "eztils-0.4.94-py3-none-any.whl", hash = "sha256:a4b90631f536119ca9ba6f83dc5c85cfa19425f289e5d095c605de206998a053"},
+    {file = "eztils-0.4.94.tar.gz", hash = "sha256:40f437daf9364f568387827dadd68f98ab2c4e5fd736b3af1d1e60609fd3f73d"},
 ]
 
 [package.dependencies]
@@ -543,6 +543,21 @@ files = [
     {file = "iniconfig-2.0.0-py3-none-any.whl", hash = "sha256:b6a85871a79d2e3b22d2d1b94ac2824226a63c6b741c88f7ae975f18b6778374"},
     {file = "iniconfig-2.0.0.tar.gz", hash = "sha256:2d91e135bf72d31a410b17c16da610a82cb55f6b0477d1a902134b24a455b8b3"},
 ]
+
+[[package]]
+name = "ipdb"
+version = "0.13.13"
+description = "IPython-enabled pdb"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
+files = [
+    {file = "ipdb-0.13.13-py3-none-any.whl", hash = "sha256:45529994741c4ab6d2388bfa5d7b725c2cf7fe9deffabdb8a6113aa5ed449ed4"},
+    {file = "ipdb-0.13.13.tar.gz", hash = "sha256:e3ac6018ef05126d442af680aad863006ec19d02290561ac88b8b1c0b0cfc726"},
+]
+
+[package.dependencies]
+decorator = {version = "*", markers = "python_version >= \"3.11\""}
+ipython = {version = ">=7.31.1", markers = "python_version >= \"3.11\""}
 
 [[package]]
 name = "ipykernel"
@@ -1132,13 +1147,13 @@ tests = ["pytest"]
 
 [[package]]
 name = "pycparser"
-version = "2.21"
+version = "2.22"
 description = "C parser in Python"
 optional = false
-python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
+python-versions = ">=3.8"
 files = [
-    {file = "pycparser-2.21-py2.py3-none-any.whl", hash = "sha256:8ee45429555515e1f6b185e78100aea234072576aa43ab53aefcae078162fca9"},
-    {file = "pycparser-2.21.tar.gz", hash = "sha256:e644fdec12f7872f86c58ff790da456218b10f863970249516d60a5eaca77206"},
+    {file = "pycparser-2.22-py3-none-any.whl", hash = "sha256:c3702b6d3dd8c7abc1afa565d7e63d53a1d0bd86cdc24edd75470f4de499cfcc"},
+    {file = "pycparser-2.22.tar.gz", hash = "sha256:491c8be9c040f5390f5bf44a5b07752bd07f56edf992381b05c701439eec10f6"},
 ]
 
 [[package]]
@@ -1754,44 +1769,6 @@ docs = ["myst-parser", "pydata-sphinx-theme", "sphinx"]
 test = ["argcomplete (>=3.0.3)", "mypy (>=1.7.0)", "pre-commit", "pytest (>=7.0,<8.1)", "pytest-mock", "pytest-mypy-testing"]
 
 [[package]]
-name = "typer"
-version = "0.11.1"
-description = "Typer, build great CLIs. Easy to code. Based on Python type hints."
-optional = false
-python-versions = ">=3.7"
-files = [
-    {file = "typer-0.11.1-py3-none-any.whl", hash = "sha256:4ce7b2a60b8543816ca97d5ec016026cbe95d1a7a931083b988c1d3682548fe7"},
-    {file = "typer-0.11.1.tar.gz", hash = "sha256:f5ae987b97ebbbd59182f8e84407bbc925bc636867fa007bce87a7a71ac81d5c"},
-]
-
-[package.dependencies]
-click = ">=8.0.0"
-typing-extensions = ">=3.7.4.3"
-
-[package.extras]
-all = ["colorama (>=0.4.3,<0.5.0)", "rich (>=10.11.0,<14.0.0)", "shellingham (>=1.3.0,<2.0.0)"]
-
-[[package]]
-name = "typer-config"
-version = "1.4.0"
-description = "Utilities for working with configuration files in typer CLIs. "
-optional = false
-python-versions = ">=3.8,<4.0"
-files = [
-    {file = "typer_config-1.4.0-py3-none-any.whl", hash = "sha256:e1f0287006810e08e9a063e40941f08531482810f74ffc2a25f6a8c22127fadf"},
-    {file = "typer_config-1.4.0.tar.gz", hash = "sha256:48c65954a15192ad6439ac16c4bc91e4b406fdb055f9ee66e4b467cd14cea265"},
-]
-
-[package.dependencies]
-typer = ">=0,<1"
-
-[package.extras]
-all = ["python-dotenv", "pyyaml (>=6.0,<7.0)", "toml (>=0.10.2,<0.11.0)"]
-python-dotenv = ["python-dotenv"]
-toml = ["toml (>=0.10.2,<0.11.0)"]
-yaml = ["pyyaml (>=6.0,<7.0)"]
-
-[[package]]
 name = "typing-extensions"
 version = "4.10.0"
 description = "Backported and Experimental Type Hints for Python 3.8+"
@@ -1933,4 +1910,4 @@ dev = ["black (>=19.3b0)", "pytest (>=4.6.2)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "03fe04f49fd45fe3688282274aeac9aa3e1d0b24d1d4ef80e1b66d28d21f9457"
+content-hash = "e5b9f093cf2abeb16a2acf918289a33b8fbc8ded6c704e5d8ea56e041c527413"

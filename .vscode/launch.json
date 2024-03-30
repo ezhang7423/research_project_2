@@ -8,9 +8,9 @@
             "name": "Python Debugger: Current File with Arguments",
             "type": "debugpy",
             "request": "launch",
-            "program": "research_project/__main__.py",
+            "program": "research_project/__init__.py",
             "console": "integratedTerminal",
-            // "args": "--config <put absolute path here to config.json>",
+            "args": "-c /home/ezipe/git/deep_research_mothership/research_project_2/runs/2024-03-30---14-59-41/config.json",
             "justMyCode": false
         }
     ]

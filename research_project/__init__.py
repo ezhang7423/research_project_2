@@ -3,13 +3,18 @@
 """ 
 Other global variables
 """
+from typing import Optional
+
+import dataclasses
 import os
-from dataclasses import dataclass
+from argparse import Namespace
+from dataclasses import dataclass, make_dataclass
 from importlib import metadata as importlib_metadata
 from pathlib import Path
 
 from dotenv import load_dotenv
 from eztils import abspath, datestr, setup_path
+from eztils.argparser import HfArgumentParser, update_dataclass_defaults
 from rich import print
 
 load_dotenv()
@@ -17,7 +22,7 @@ load_dotenv()
 
 def get_version() -> str:
     try:
-        return importlib_metadata.version(__name__)
+        return importlib_metadata.version("research_project")
     except importlib_metadata.PackageNotFoundError:  # pragma: no cover
         return "unknown"
 
@@ -51,6 +56,24 @@ def setup_experiment():
 
     os.chdir(LOG_DIR)
 
+    """SETUP CONFIG"""
+    parser = HfArgumentParser(Config)
+    parser.add_argument("-c", "--config", type=str)
+
+    conf: Config
+    extras: Namespace
+    conf, extras = parser.parse_args_into_dataclasses()
+
+    if extras.config is not None:  # parse config file
+        (original_conf,) = parser.parse_json_file(extras.config)
+        # reinit the parser so that the command line args overwrite the file-specified args
+        parser = HfArgumentParser(update_dataclass_defaults(Config, original_conf))
+        parser.add_argument("-c", "--config", type=str)
+        conf, extras = parser.parse_args_into_dataclasses()
+
+    parser.to_json([conf], LOG_DIR / "config.json")
+    return conf
+
 
 @dataclass
 class Config:
@@ -61,5 +84,31 @@ class Config:
     n_head: int = 1
     n_embd: int = 64
     dropout: float = 0.0
-    bias: bool = True  # True: bias in Linears and LayerNorms, like GPT-2. False: a bit better and faster
-    seed: int = 43
+    bias: bool = (
+        True  # True: bias in Linears and LayerNorms, like GPT-2. False: a bit better and faster
+    )
+    seed: int = 42
+    wandb: bool = False
+
+
+def main():
+    conf = setup_experiment()
+
+    print(f"[bold green]Welcome to research_project v{version}[/]")
+    print(conf)
+
+    # from eztils.torch import seed_everything # install torch first to uncomment this line (by getting `poetry add eztils[torch]`` as a dependency)
+    # seed_everything(conf.seed)
+    if conf.wandb:
+        import wandb as wb
+
+        wb.init(
+            project=conf.wandb_project,
+            entity=conf.wandb_profile_name,
+            name=conf.name,
+            config=dataclasses.asdict(conf),
+        )
+
+
+if __name__ == "__main__":
+    main()
