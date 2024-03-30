@@ -56,20 +56,20 @@ test = ["astroid (>=1,<2)", "astroid (>=2,<4)", "pytest"]
 
 [[package]]
 name = "beartype"
-version = "0.16.4"
+version = "0.17.2"
 description = "Unbearably fast runtime type checking in pure Python."
 optional = false
 python-versions = ">=3.8.0"
 files = [
-    {file = "beartype-0.16.4-py3-none-any.whl", hash = "sha256:64865952f9dff1e17f22684b3c7286fc79754553b47eaefeb1286224ae8c1bd9"},
-    {file = "beartype-0.16.4.tar.gz", hash = "sha256:1ada89cf2d6eb30eb6e156eed2eb5493357782937910d74380918e53c2eae0bf"},
+    {file = "beartype-0.17.2-py3-none-any.whl", hash = "sha256:c22b21e1f785cfcf5c4d3d13070f532b6243a3ad67e68d2298ff08d539847dce"},
+    {file = "beartype-0.17.2.tar.gz", hash = "sha256:e911e1ae7de4bccd15745f7643609d8732f64de5c2fb844e89cbbed1c5a8d495"},
 ]
 
 [package.extras]
 all = ["typing-extensions (>=3.10.0.0)"]
-dev = ["autoapi (>=0.9.0)", "coverage (>=5.5)", "mypy (>=0.800)", "numpy", "pandera", "pydata-sphinx-theme (<=0.7.2)", "pytest (>=4.0.0)", "sphinx", "sphinx (>=4.2.0,<6.0.0)", "sphinxext-opengraph (>=0.7.5)", "tox (>=3.20.1)", "typing-extensions (>=3.10.0.0)"]
+dev = ["autoapi (>=0.9.0)", "coverage (>=5.5)", "equinox", "mypy (>=0.800)", "numpy", "pandera", "pydata-sphinx-theme (<=0.7.2)", "pytest (>=4.0.0)", "sphinx", "sphinx (>=4.2.0,<6.0.0)", "sphinxext-opengraph (>=0.7.5)", "tox (>=3.20.1)", "typing-extensions (>=3.10.0.0)"]
 doc-rtd = ["autoapi (>=0.9.0)", "pydata-sphinx-theme (<=0.7.2)", "sphinx (>=4.2.0,<6.0.0)", "sphinxext-opengraph (>=0.7.5)"]
-test-tox = ["mypy (>=0.800)", "numpy", "pandera", "pytest (>=4.0.0)", "sphinx", "typing-extensions (>=3.10.0.0)"]
+test-tox = ["equinox", "mypy (>=0.800)", "numpy", "pandera", "pytest (>=4.0.0)", "sphinx", "typing-extensions (>=3.10.0.0)"]
 test-tox-coverage = ["coverage (>=5.5)"]
 
 [[package]]
@@ -1142,6 +1142,22 @@ files = [
 ]
 
 [[package]]
+name = "pyflyby"
+version = "1.9.2"
+description = "pyflyby - Python development productivity tools, in particular automatic import management"
+optional = false
+python-versions = "<4,>3.6"
+files = [
+    {file = "pyflyby-1.9.2.tar.gz", hash = "sha256:5b3bcf934fee9d67e784c9629f97e2a30abe130eafea406378d838dd3adf4915"},
+]
+
+[package.dependencies]
+black = "*"
+isort = "*"
+six = "*"
+toml = "*"
+
+[[package]]
 name = "pygments"
 version = "2.17.2"
 description = "Pygments is a syntax highlighting package written in Python."
@@ -1672,6 +1688,17 @@ files = [
 ]
 
 [[package]]
+name = "toml"
+version = "0.10.2"
+description = "Python Library for Tom's Obvious, Minimal Language"
+optional = false
+python-versions = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*"
+files = [
+    {file = "toml-0.10.2-py2.py3-none-any.whl", hash = "sha256:806143ae5bfb6a3c6e736a764057db0e6a0e05e338b5630894a5f779cabb4f9b"},
+    {file = "toml-0.10.2.tar.gz", hash = "sha256:b3bda1d108d5dd99f4a20d24d9c348e91c4db7ab1b749200bded2f839ccbe68f"},
+]
+
+[[package]]
 name = "tornado"
 version = "6.4"
 description = "Tornado is a Python web framework and asynchronous networking library, originally developed at FriendFeed."
@@ -1805,13 +1832,13 @@ zstd = ["zstandard (>=0.18.0)"]
 
 [[package]]
 name = "varname"
-version = "0.12.2"
+version = "0.13.0"
 description = "Dark magics about variable names in python."
 optional = false
 python-versions = ">=3.8,<4.0"
 files = [
-    {file = "varname-0.12.2-py3-none-any.whl", hash = "sha256:7edf7d8e22fbde6f0f813d5e3a8f6c723122921d16dedf1568fcacb84b91386d"},
-    {file = "varname-0.12.2.tar.gz", hash = "sha256:f29c0ffdeab5a439d96222d3a52a0b281083f22528142dc36a69ad112a530c9f"},
+    {file = "varname-0.13.0-py3-none-any.whl", hash = "sha256:d41101d69d92d167e15f2997039c0a52a73ff0c8e02256c3c8b549a11fc4b176"},
+    {file = "varname-0.13.0.tar.gz", hash = "sha256:64e9052029fd4d49686ac6443a9ed182c2c149686e42acef69ebaa3a27811beb"},
 ]
 
 [package.dependencies]
@@ -1906,4 +1933,4 @@ dev = ["black (>=19.3b0)", "pytest (>=4.6.2)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "ef467056819254f9739bd641d35779a30df565c250e76c1481af4c5f0075f8a3"
+content-hash = "03fe04f49fd45fe3688282274aeac9aa3e1d0b24d1d4ef80e1b66d28d21f9457"

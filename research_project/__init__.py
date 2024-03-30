@@ -4,7 +4,7 @@
 Other global variables
 """
 import os
-import sys
+from dataclasses import dataclass
 from importlib import metadata as importlib_metadata
 from pathlib import Path
 
@@ -50,3 +50,16 @@ def setup_experiment():
         (REPO_DIR / "runs").symlink_to(RUN_DIR)
 
     os.chdir(LOG_DIR)
+
+
+@dataclass
+class Config:
+    block_size: int = 1024
+    recent_context: int = 20
+    add_prompt: int = True
+    n_layer: int = 3
+    n_head: int = 1
+    n_embd: int = 64
+    dropout: float = 0.0
+    bias: bool = True  # True: bias in Linears and LayerNorms, like GPT-2. False: a bit better and faster
+    seed: int = 43

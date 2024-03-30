@@ -33,6 +33,7 @@ pyupgrade = "^3.15.0"
 ####################################
 ipykernel = "^6.29.4"
 ipython = "^8.20.0"
+pyflyby = "^1.9.2"
 
 [tool.black]
 # https://github.com/psf/black
