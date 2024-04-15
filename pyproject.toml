@@ -6,7 +6,7 @@ readme = "README.md"
 version = "0.1.0"
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.11,<3.12"
 python-dotenv = "^1.0.0"
 wandb = "^0.16.2"
 eztils = "^0.4.94"
