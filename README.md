@@ -3,8 +3,8 @@
 
 ## TODO
 
-1. update makefile to use venv instead of conda (use a single py311 condaenv or smth like that)
-2. use the configurator from nano-gpt
+this is empty at the moment
+
 
 ## Installation
 
