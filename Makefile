@@ -23,7 +23,7 @@ install:
 	fi
 
 	$(CONDA_ACTIVATE) py311
-	$(CONDA) deactivate # ensures there exists a python3.11 for use, but will instead a virtualenv in the project directory at .venv
+	#$(CONDA) deactivate # ensures there exists a python3.11 for use, but will instead a virtualenv in the project directory at .venv
 
 	type python
 	export POETRY_VIRTUALENVS_IN_PROJECT=1
