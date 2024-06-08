@@ -26,9 +26,11 @@ install:
 	#$(CONDA) deactivate # ensures there exists a python3.11 for use, but will instead a virtualenv in the project directory at .venv
 
 	type python
-	export POETRY_VIRTUALENVS_IN_PROJECT=1
-	export POETRY_VIRTUALENVS_PREFER_ACTIVE_PYTHON=1
+	rm -rf .venv
+	python -m venv .venv
+	source .venv/bin/activate
 
+	type python
 	poetry lock -n && poetry export --without-hashes > requirements.txt
 	poetry install -n
 	poetry run pre-commit install
