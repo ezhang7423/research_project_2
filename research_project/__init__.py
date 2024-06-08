@@ -3,12 +3,12 @@
 """ 
 Other global variables
 """
-from typing import Optional
+from typing import List, Optional
 
 import dataclasses
 import os
 from argparse import Namespace
-from dataclasses import dataclass, make_dataclass
+from dataclasses import dataclass, field, make_dataclass
 from importlib import metadata as importlib_metadata
 from pathlib import Path
 
@@ -84,21 +84,20 @@ class Config:
     n_head: int = 1
     n_embd: int = 64
     dropout: float = 0.0
-    bias: bool = (
-        True  # True: bias in Linears and LayerNorms, like GPT-2. False: a bit better and faster
-    )
+    bias: bool = True  # True: bias in Linears and LayerNorms, like GPT-2. False: a bit better and faster
     seed: int = 42
     wandb: bool = False
+    sample_list: List[int] = field(default_factory=lambda: [1, 2, 3])
 
 
 def main():
     conf = setup_experiment()
 
     print(f"[bold green]Welcome to research_project v{version}[/]")
-    print(conf)
 
     # from eztils.torch import seed_everything # install torch first to uncomment this line (by getting `poetry add eztils[torch]`` as a dependency)
     # seed_everything(conf.seed)
+
     if conf.wandb:
         import wandb as wb
 
