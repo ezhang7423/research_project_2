@@ -15,7 +15,7 @@ install:
 
 	# TODO ensure version of poetry is correct
 	! type -P poetry &> /dev/null && pipx install poetry==1.7.1
-
+	pipx ensurepath
 	if ! { conda list --name 'py311'; } >/dev/null 2>&1; 
 	then
 		# create py311 conda environment
