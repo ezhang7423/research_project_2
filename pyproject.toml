@@ -109,3 +109,6 @@ addopts = [
   "--doctest-modules",
   "--doctest-continue-on-failure",
 ]
+
+[virtualenvs]
+in-project = true
