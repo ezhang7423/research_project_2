@@ -16,9 +16,9 @@ make install
 
 ## Usage
 
-Use json to modify the config:
+Run and specify configuration here:
 ```
-research_project --conf '{"block_size": 10}'
+research_project --n_layer 10000 --sample_list 2 3 5
 ```
 
 Reuse an old config file by specifying the path:
