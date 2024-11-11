@@ -87,7 +87,7 @@ class Config:
     bias: bool = True  # True: bias in Linears and LayerNorms, like GPT-2. False: a bit better and faster
     seed: int = 42
     wandb: bool = False
-    sample_list: List[int] = field(default_factory=lambda: [1, 2, 3])
+    sample_list: List[int] = field(default_factory=lambda: [1, 2, 3]) # specify on command line using `research_project --sample_list 2 3 5`
 
 
 def main():
