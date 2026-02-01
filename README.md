@@ -14,14 +14,20 @@ Find and replace `research_project` with the name of your module. Rename the fol
 make install
 ```
 
+This project uses `uv` for dependency management. To (re)generate the lockfile and `requirements.txt`:
+
+```
+make lock
+```
+
 ## Usage
 
 Run and specify configuration here:
 ```
-research_project --n_layer 10000 --sample_list 2 3 5
+uv run research_project --n_layer 10000 --sample_list 2 3 5
 ```
 
 Reuse an old config file by specifying the path:
 ```
-research_project --config $PWD/runs/<YYYY-MM-DD>---<HH-MM-SS>/config.json
+uv run research_project --config $PWD/runs/<YYYY-MM-DD>---<HH-MM-SS>/config.json
 ```

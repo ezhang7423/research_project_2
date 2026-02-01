@@ -95,7 +95,7 @@ def main():
 
     print(f"[bold green]Welcome to research_project v{version}[/]")
 
-    # from eztils.torch import seed_everything # install torch first to uncomment this line (by getting `poetry add eztils[torch]`` as a dependency)
+    # from eztils.torch import seed_everything  # install torch first to uncomment (e.g. `uv add "eztils[torch]"`)
     # seed_everything(conf.seed)
 
     if conf.wandb:

@@ -1,45 +1,46 @@
-[tool.poetry]
-authors = ["ezhang7423 <ezhang@g.harvard.edu>"]
-description = ""
+[project]
 name = "research_project"
-readme = "README.md"
 version = "0.1.0"
+description = ""
+readme = "README.md"
+requires-python = ">=3.11,<3.12"
+authors = [{ name = "ezhang7423", email = "ezhang@g.harvard.edu" }]
+dependencies = [
+    "python-dotenv>=1.0.0,<2",
+    "wandb>=0.16.2,<0.17",
+    "eztils>=0.4.94,<0.5",
+]
 
-[tool.poetry.dependencies]
-python = "^3.11,<3.12"
-python-dotenv = "^1.0.0"
-wandb = "^0.16.2"
-eztils = "^0.4.94"
+[project.scripts]
+research_project = "research_project.__init__:main"
+
+[dependency-groups]
+dev = [
+    "black>=23.12.1,<24",
+    "isort[colors]>=5.13.2,<6",
+    "mypy>=1.8.0,<2",
+    "pre-commit>=3.6.0,<4",
+    "pytest>=7.4.4,<8",
+    "pyupgrade>=3.15.0,<4",
+    "ipykernel>=6.29.4,<7",
+    "ipython>=8.20.0,<9",
+    "pyflyby>=1.9.2,<2",
+    "ipdb>=0.13.13,<0.14",
+]
 
 [build-system]
-build-backend = "poetry.core.masonry.api"
-requires = ["poetry-core"]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
 
-[tool.poetry.scripts]
-# Entry points for the package https://python-poetry.org/docs/pyproject/#scripts
-"research_project" = "research_project.__init__:main"
-
-[tool.poetry.group.dev.dependencies]
-black = "^23.12.1"
-isort = "^5.13.2"
-mypy = "^1.8.0"
-pre-commit = "^3.6.0"
-pytest = "^7.4.4"
-pyupgrade = "^3.15.0"
-
-####################################
-# Tools #
-####################################
-ipykernel = "^6.29.4"
-ipython = "^8.20.0"
-pyflyby = "^1.9.2"
-ipdb = "^0.13.13"
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["research_project*"]
 
 [tool.black]
 # https://github.com/psf/black
 color = true
 line-length = 88
-target-version = ["py38"]
+target-version = ["py311"]
 
 exclude = '''
 /(
@@ -60,7 +61,7 @@ exclude = '''
 [tool.isort]
 # https://github.com/timothycrosley/isort/
 line_length = 88
-py_version = 38
+py_version = 311
 
 color_output = true
 include_trailing_comma = true
@@ -109,6 +110,3 @@ addopts = [
   "--doctest-modules",
   "--doctest-continue-on-failure",
 ]
-
-[virtualenvs]
-in-project = true
